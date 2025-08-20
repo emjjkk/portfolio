@@ -24,5 +24,5 @@ npm run dev
 npm run build
 ```
 
-<img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/6013a8a6-a099-4480-9d4e-6bea65960102" />
+
 
