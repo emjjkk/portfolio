@@ -21,14 +21,29 @@
         </span>
         <h2 class="text-sm text-right w-full pb-1 border-b text-neutral-700 border-neutral-700 mb-5">Projects</h2>
         <a href="https://dreamweaverdiscord.vercel.app">
-          <div class="flex items-center justify-between group">
+          <div class="flex items-center justify-between group mb-5">
             <div class="mb-1 items-center flex gap-4">
               <img src="https://cdn.discordapp.com/app-icons/1417683739580039208/a32900f495e4d35e0ba091f3a73f7720.png"
                 class="w-16 h-16 rounded-md">
               <div>
-                <p class="text-sm/[1.0] md:mb-2">Dreamweaver</p>
-                <p class="text-sm/[1.0] md:mb-2">AI Art generation discord bot powered Qwen-Image</p>
+                <p class="text-sm/[1.0] md:mb-1">Dreamweaver (Discord Bot)</p>
+                <p class="text-sm/[1.0] md:mb-1">AI Art generation discord bot powered Qwen-Image</p>
                 <p class="text-sm/[1.0] opacity-80">Typescript, Vercel, Huggingface Inference</p>
+              </div>
+            </div>
+            <ArrowUpRight class="group-hover:text-red-500"/>
+          </div>
+        </a>
+
+        <a href="https://github.com/emjjkk/Vistab">
+          <div class="flex items-center justify-between group">
+            <div class="mb-1 items-center flex gap-4">
+              <img src="/vistab.png"
+                class="w-16 h-16 rounded-md border border-neutral-700">
+              <div>
+                <p class="text-sm/[1.0] md:mb-1">Vistab (Chrome Extension)</p>
+                <p class="text-sm/[1.0] md:mb-1">Modern new tab for chrome w/ image/video background + more</p>
+                <p class="text-sm/[1.0] opacity-80">HTML, TailwindCSS, Javascript, Chrome Manifest V3</p>
               </div>
             </div>
             <ArrowUpRight class="group-hover:text-red-500"/>
