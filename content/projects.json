@@ -1,0 +1,21 @@
+[
+  {
+    "title": "Dreamweaver",
+    "description": "AI Image generation discord bot running 100% on edge with NextJS, Vercel, Supabase, and Huggingface",
+    "background": "https://i.ibb.co/XZPJMMdP/Capture.png",
+    "logo": "https://cdn.discordapp.com/app-icons/1417683739580039208/a32900f495e4d35e0ba091f3a73f7720.png",
+    "repo": "https://github.com/emjjkk/dreamweaver",
+    "demo": "https://dreamweaverdiscord.vercel.app",
+    "stack": ["Next.js", "DiscordJS", "HuggingFace"],
+    "category": "Discord Bot"
+  },
+  {
+    "title": "Vistab",
+    "description": "Pretty, modern new tab for chrome with customizable video/image background, bookmarks, and more",
+    "background": "https://private-user-images.githubusercontent.com/49512755/497381014-fda539eb-a31c-457a-98cf-c0d379c2225d.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjE3OTM5OTUsIm5iZiI6MTc2MTc5MzY5NSwicGF0aCI6Ii80OTUxMjc1NS80OTczODEwMTQtZmRhNTM5ZWItYTMxYy00NTdhLTk4Y2YtYzBkMzc5YzIyMjVkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEwMzAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMDMwVDAzMDgxNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTFhNzk3NmViYmM5ZjFlNzZjYzY3NDNiYmRlNWU3Njc3NTlkZGNkZWI3YTY3NWExNDc4OTU2MmY4NzExMmMyN2YmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.hzurFo0iuIjtZ0Iz2tYBJ4-D2n-ICANULcUfbepkJvU",
+    "logo": "https://i.ibb.co/M5W81CLF/vistab.png",
+    "repo": "https://github.com/emjjkk/vistab",
+    "stack": ["HTML/CSS", "Javascript", "Manifest V3"],
+    "category": "Chrome Extension"
+  }
+]

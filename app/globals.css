@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-ticker {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker 8s linear infinite;
+}
+
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scroll{
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.cs {
+  --sb-track-color: #d3d7da00;
+  --sb-thumb-color: #adadad;
+  --sb-size: 6px;
+}
+
+.cs::-webkit-scrollbar {
+  width: var(--sb-size)
+}
+
+.cs::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 0px;
+}
+
+.cs::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 0px;
+  
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .cs {
+    scrollbar-color: var(--sb-thumb-color)
+                     var(--sb-track-color);
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* blog-md.css */
+
+/* Apply general markdown styling */
+.blog-content {
+  line-height: 1.8;
+  color: #111827;
+}
+
+/* Headings */
+.blog-content h1 {
+  font-size: 2.25rem; /* 36px */
+  font-weight: 700;
+  margin: 1.5rem 0 1rem;
+}
+
+.blog-content h2 {
+  font-size: 1.875rem; /* 30px */
+  font-weight: 600;
+  margin: 1.25rem 0 0.75rem;
+}
+
+.blog-content h3 {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+}
+
+.blog-content h4 {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 600;
+  margin: 0.75rem 0 0.5rem;
+}
+
+/* Paragraphs */
+.blog-content p {
+  margin: 0.75rem 0;
+}
+
+/* Links */
+.blog-content a {
+  color: #3b82f6; /* Tailwind blue-500 */
+  text-decoration: underline;
+}
+
+.blog-content a:hover {
+  color: #2563eb; /* Tailwind blue-600 */
+}
+
+/* Lists */
+.blog-content ul,
+.blog-content ol {
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.blog-content li {
+  margin: 0.25rem 0;
+}
+
+/* Blockquotes */
+.blog-content blockquote {
+  border-left: 4px solid #3b82f6;
+  padding-left: 1rem;
+  color: #374151;
+  font-style: italic;
+  margin: 1rem 0;
+  background-color: #f3f4f6; /* Tailwind gray-100 */
+}
+
+/* Code blocks */
+.blog-content pre {
+  background-color: #111827; /* dark bg */
+  color: #f9fafb;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+  font-family: 'Fira Code', monospace;
+}
+
+.blog-content code {
+  background-color: #f3f4f6; /* light bg inline */
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-family: 'Fira Code', monospace;
+}
+
+/* Images */
+.blog-content img {
+  max-width: 100%;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
+/* Tables */
+.blog-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.blog-content th,
+.blog-content td {
+  border: 1px solid #d1d5db; /* gray-300 */
+  padding: 0.5rem 1rem;
+  text-align: left;
+}
+
+.blog-content th {
+  background-color: #f3f4f6; /* gray-100 */
+}
+
+

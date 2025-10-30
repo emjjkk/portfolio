@@ -1,0 +1,10 @@
+[
+  {
+    "slug": "hello-world",
+    "title": "Hello World, I Guess We're Doing This",
+    "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
+    "excerpt": "My very fist and historic blog post.",
+    "date": "Oct 15, 2025",
+    "readTime": "5 min read"
+  }
+]
