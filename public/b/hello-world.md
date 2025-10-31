@@ -3,7 +3,7 @@ Yeah, this is *that*, but for my blog.
 
 So… hello, world. 👋
 
-I finally decided to start writing stuff here — probably thoughts, experiments, and the occasional ramble about code, design, or whatever random brainwave hits me at 3 a.m. (You’ve been warned.)
+I finally decided to start writing stuff here — probably thoughts, experiments, and the occasional ramble about code, design, or whatever random brainwave hits me at 3 a.m.
 
 I can’t promise everything here will make sense. In fact, some of it definitely won’t. But I *can* promise it’ll be real — curious, slightly unhinged, but full of heart.
 

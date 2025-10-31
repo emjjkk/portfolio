@@ -63,10 +63,10 @@ export default function ClientBlogPage({ slug }: ClientBlogPageProps) {
 
       {/* Post Header */}
       <div className="mb-6">
-        <h1 className="w-2/3 text-3xl md:text-4xl mt-5 font-bold mb-5">
+        <h1 className="md:w-2/3 text-3xl md:text-4xl mt-5 font-bold mb-5">
           {postMeta.title}
         </h1>
-        <div className="w-2/3 mb-5 flex items-center gap-3 text-sm text-gray-500">
+        <div className="md:w-2/3 mb-5 flex items-center gap-3 text-sm text-gray-500">
           <span>{postMeta.date}</span>
           <span>•</span>
           <span>{postMeta.readTime}</span>
@@ -75,7 +75,7 @@ export default function ClientBlogPage({ slug }: ClientBlogPageProps) {
           <img
             src={postMeta.image}
             alt={postMeta.title}
-            className="w-2/3 h-auto object-cover rounded-md mt-4"
+            className="md:w-2/3 h-auto object-cover rounded-md mt-4"
           />
         )}
       </div>
@@ -103,7 +103,7 @@ export default function ClientBlogPage({ slug }: ClientBlogPageProps) {
                       style={materialDark}
                       language={match[1]}
                       PreTag="div"
-                      className="text-sm"
+                      className="text-xs codeblocku cs"
                       {...props}
                     >
                       {String(children).replace(/\n$/, "")}
