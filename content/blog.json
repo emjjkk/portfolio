@@ -6,5 +6,13 @@
     "excerpt": "My very fist and historic blog post.",
     "date": "Oct 15, 2025",
     "readTime": "5 min read"
+  },
+  {
+    "slug": "displaying-your-live-activity-from-almost-every-website",
+    "title": "Displaying your live activity from (almost) every website on your own webpage w/ NextJS and Redis",
+    "image": "https://cdn-images-1.medium.com/max/800/1*4_7GBMUIo6zHJD0SJ64A8w.png",
+    "excerpt": "Here's a nice touch for your portfolio website or next social app - what if users could see what you were doing, right now? Maybe you're watching a specific song on YouTube. Editing a specific file in Github Codespaces. Watching anime on a pirating site.",
+    "date": "Oct 31, 2025",
+    "readTime": "11 min read"
   }
 ]
