@@ -27,7 +27,7 @@ export default function ContactPage() {
 
       <h1 className="text-3xl md:text-4xl mt-5 mb-2 md:w-3/4">Get in Touch</h1>
       <p className="text-md text-gray-600 md:w-2/3 mb-8">
-        If you want to collaborate, ask a question, just say hi, or talk about how amazing Herta is, you can reach me here.
+        If you want to collaborate, ask a question, just say hi, you can reach me here.
       </p>
 
       <div className="">
@@ -67,7 +67,7 @@ export default function ContactPage() {
             <option value="collaboration">Collaboration</option>
             <option value="question">Work</option>
             <option value="feedback">I just want to say hi</option>
-            <option value="feedback">DID YOU KNOW THAT HERTA IS SO DAMN AWESOME</option>
+            <option value="feedback"></option>
             <option value="other">Other</option>
           </select>
 
