@@ -1,10 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Header from "@/components/header";
+import rehypeRaw from "rehype-raw";
 import ReactMarkdown from "react-markdown";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { LuLoaderCircle } from "react-icons/lu";
 import blogPosts from "@/content/blog.json";
+import Header from "@/components/header";
 
 interface BlogPost {
   slug: string;
@@ -15,10 +18,14 @@ interface BlogPost {
   readTime: string;
 }
 
-export default function ClientBlogPage({ slug }: { slug: string }) {
+interface ClientBlogPageProps {
+  slug: string;
+}
+
+export default function ClientBlogPage({ slug }: ClientBlogPageProps) {
   const [postContent, setPostContent] = useState<string>("");
   const [postMeta, setPostMeta] = useState<BlogPost | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const loadPost = async () => {
@@ -29,6 +36,7 @@ export default function ClientBlogPage({ slug }: { slug: string }) {
       if (meta) {
         try {
           const response = await fetch(`/b/${slug}.md`);
+          if (!response.ok) throw new Error("Failed to fetch markdown file");
           const markdown = await response.text();
           setPostContent(markdown);
         } catch (err) {
@@ -55,10 +63,10 @@ export default function ClientBlogPage({ slug }: { slug: string }) {
 
       {/* Post Header */}
       <div className="mb-6">
-        <h1 className="text-3xl md:text-4xl mt-5 font-bold mb-2">
+        <h1 className="w-2/3 text-3xl md:text-4xl mt-5 font-bold mb-5">
           {postMeta.title}
         </h1>
-        <div className="flex items-center gap-3 text-sm text-gray-500">
+        <div className="w-2/3 mb-5 flex items-center gap-3 text-sm text-gray-500">
           <span>{postMeta.date}</span>
           <span>•</span>
           <span>{postMeta.readTime}</span>
@@ -67,16 +75,49 @@ export default function ClientBlogPage({ slug }: { slug: string }) {
           <img
             src={postMeta.image}
             alt={postMeta.title}
-            className="w-full h-[400px] object-cover rounded-md mt-4"
+            className="w-2/3 h-auto object-cover rounded-md mt-4"
           />
         )}
       </div>
 
       <div className="md:flex gap-6">
+        {/* Markdown Content */}
         <div className="md:w-2/3 mb-4">
-          {/* Post Content */}
-          <div className="prose max-w-none blog-content">
-            <ReactMarkdown>{postContent}</ReactMarkdown>
+          <div className="prose max-w-none blog-content cs">
+            <ReactMarkdown
+              rehypePlugins={[rehypeRaw as any]}
+              components={{
+                code({
+                  inline,
+                  className,
+                  children,
+                  ...props
+                }: {
+                  inline?: boolean;
+                  className?: string;
+                  children?: React.ReactNode;
+                }) {
+                  const match = /language-(\w+)/.exec(className ?? "");
+                  return !inline && match ? (
+                    <SyntaxHighlighter
+                      style={materialDark}
+                      language={match[1]}
+                      PreTag="div"
+                      className="text-sm"
+                      {...props}
+                    >
+                      {String(children).replace(/\n$/, "")}
+                    </SyntaxHighlighter>
+                  ) : (
+                    <code className={className} {...props}>
+                      {children}
+                    </code>
+                  );
+                },
+              }}
+            >
+              {postContent}
+            </ReactMarkdown>
           </div>
         </div>
 

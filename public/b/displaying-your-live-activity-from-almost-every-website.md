@@ -368,9 +368,11 @@ And we're done. We now have a page that shows our live activity, and better yet,
 
 ## Links & Additional Notes
 
-- Source Code [https://github.com/emjjkk/nextjs-premid-redis-example](https://github.com/emjjkk/nextjs-premid-redis-example)
-- PreMiD [https://premid.app/](https://premid.app/)
-- UpStash [https://upstash.com/](https://upstash.com/)
+💻 Source Code [https://github.com/emjjkk/nextjs-premid-redis-example](https://github.com/emjjkk/nextjs-premid-redis-example)
+
+🔗 PreMiD [https://premid.app/](https://premid.app/)
+
+🔗 UpStash [https://upstash.com/](https://upstash.com/)
 
 **More customization.** If you want to have full control over exactly which activities show and how it displays, all of that can be controlled in the UI of the PreMiD extension. There is also a [PreMiD Activity Library](https://premid.app/library) where you can select detection for over 1000 websites. I encourage you to explore these, there are a lot more features of PreMiD I haven't covered.
 
@@ -380,7 +382,6 @@ And we're done. We now have a page that shows our live activity, and better yet,
 
 **Discord Activity.** As of November 2025, your activity will inevitably also show in your discord profile as well as on your website, and you cannot really separate it to have one but not the other. Not a problem, but something to know.
 
----
 
 Thanks for reading! I hope you found this basic guide of some value. Please consider following for more articles like this in the future. I plan to be writing these on a weekly basis.
 

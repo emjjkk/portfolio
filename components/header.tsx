@@ -100,9 +100,6 @@ export default function Header() {
             className="w-5 h-5 rounded-full"
           />
           <span className="text-md">Emmanuel Alabi</span>
-          {pathname !== "/" && (
-            <span className="text-md text-slate-400">{pathname}</span>
-          )}
         </div>
 
         {/* Right section (desktop only) */}
