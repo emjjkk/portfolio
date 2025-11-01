@@ -8,6 +8,7 @@ import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { LuLoaderCircle } from "react-icons/lu";
 import blogPosts from "@/content/blog.json";
 import Header from "@/components/header";
+import SubscribeBox from "@/components/subscribe-box";
 
 interface BlogPost {
   slug: string;
@@ -50,7 +51,7 @@ export default function ClientBlogPage({ slug }: ClientBlogPageProps) {
 
   if (loading)
     return (
-      <main className="w-[70%] h-screen flex items-center justify-center">
+      <main className="w-full md:w-[70%] h-screen flex items-center justify-center">
         <LuLoaderCircle className="text-3xl animate-spin text-slate-500" />
       </main>
     );
@@ -124,27 +125,18 @@ export default function ClientBlogPage({ slug }: ClientBlogPageProps) {
         {/* Sidebar */}
         <div className="md:w-1/3">
           <div className="sticky top-0 space-y-4">
-            <div className="bg-blue-50 rounded-lg p-5">
+            <div className="bg-blue-50 dark:bg-neutral-700 dark:text-neutral-100 rounded-lg p-5">
               <h3 className="text-lg font-semibold mb-3">Subscribe, maybe?</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                I won’t spam — just the occasional interesting thing.
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                No spam - just the occasional interesting thing.
               </p>
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <button className="w-full px-4 py-2 text-sm bg-blue-500 rounded-md text-white hover:bg-blue-600 transition-colors">
-                Subscribe
-              </button>
+              <SubscribeBox />
             </div>
-
-            <div className="bg-slate-100 rounded-lg p-5 flex items-center justify-center h-32">
+            <div className="bg-neutral-100 dark:bg-neutral-700 rounded-lg p-5 flex items-center justify-center h-32">
               ad.
             </div>
-
-            <span className="text-sm text-right text-slate-500 block">
-              Creation is a form of rebellion <br />© 2025 Emmanuel Alabi
+            <span className="text-sm text-right text-neutral-500 dark:text-neutral-400">
+              © 2025 Emmanuel Alabi
             </span>
           </div>
         </div>

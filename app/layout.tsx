@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Outfit, Geist_Mono, DM_Sans } from "next/font/google";
+import { Outfit, Geist_Mono, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 
-import Navigation from "@/components/navigation"
+import Navigation from "@/components/navigation";
+import DarkMode from "@/components/dark-mode";
 
 const geistSans = Outfit({
   variable: "--font-geist-sans",
@@ -25,9 +26,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.className} ${geistMono.variable} antialiased w-full h-screen flex bg-white text-black`}>
-        <Navigation/>
-        { children }
+      <body
+        className={`${geistSans.className} ${geistMono.variable} antialiased w-full h-screen flex bg-white text-black dark:bg-neutral-950 dark:text-neutral-100`}
+      >
+        <DarkMode />
+        <Navigation />
+        {children}
       </body>
     </html>
   );

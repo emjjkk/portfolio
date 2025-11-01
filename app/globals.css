@@ -76,7 +76,6 @@
 /* Apply general markdown styling */
 .blog-content {
   line-height: 1.8;
-  color: #111827;
 }
 
 /* Headings */
@@ -133,10 +132,9 @@
 /* Blockquotes */
 .blog-content blockquote {
   border-left: 4px solid #3b82f6;
-  padding: 1rem;
-  color: #374151;
+  padding-left: 1rem;
   margin: 1rem 0;
-  background-color: #f3f4f6; /* Tailwind gray-100 */
+  
 }
 
 .blog-content .codeblocku{

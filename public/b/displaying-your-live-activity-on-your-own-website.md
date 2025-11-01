@@ -1,10 +1,11 @@
-Here's a nice touch for your portfolio website or next social app - what if users could see what you were doing, right now? Maybe you're watching a specific song on YouTube. Editing a specific file in Github Codespaces. Watching anime on a pirating site.
+Here’s a little thing I thought would be a nice touch for my portfolio website (or really, any social app): what if people could see what I was doing right now? Maybe I’m listening to a specific song on YouTube? Editing a file in GitHub Codespaces?
 
-To implement something like that would have been hard - it would have involved reading through official API documentations like Spotify's to see if it was even possible at all. And a lot of times it wasn't. If it was, you still had to write lines upon lines and even whole files of code to implement the live activity of each platform separately. Ultimately it might not be worth it if you just wanted a quick aesthetic for your biolink.
+A while back, pulling something like this off would’ve been a pain. I’d have to go through official API docs (like Spotify’s) just to figure out if it was even possible. Half the time, it wasn’t. And when it was, I’d have to write piles of code for each individual platform — just to show a tiny “Now Watching” block somewhere on my site.
+It was messy, overkill, and not really worth it for a simple aesthetic touch on a biolink.
 
-The great news is, there's now a much easier, all-in-one way to do this. One code to fetch all your activity, but you still have control over exactly which activity shows and how.
+But now, there’s a way easier, all-in-one way to do it. One setup to fetch all your activity, with full control over what shows and how it looks.
 
-Let me show you a quick guide to do it with everyone's favourite web framework, NextJS.
+Let me show you how I did it using everyone’s favorite web framework — NextJS.
 
 ## Getting Started with PreMiD
 

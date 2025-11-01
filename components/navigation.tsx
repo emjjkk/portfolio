@@ -3,7 +3,7 @@
 import { LuHouse, LuUserRound, LuFolder, LuCarrot, LuSend } from "react-icons/lu";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import type { IconType } from "react-icons";
+import type { IconType } from "react-icons"; 
 
 interface NavLink {
   href: string;
@@ -24,7 +24,7 @@ export default function Navigation() {
   ];
 
   return (
-    <div className="hidden w-[30%] h-full p-6 md:flex items-center justify-end border-r border-slate-300">
+    <div className="hidden w-[30%] h-full p-6 md:flex items-center justify-end border-r border-slate-300 dark:border-slate-700">
       <div className="flex flex-col items-end gap-4">
         {links.map((link) => {
           const Icon = link.icon;

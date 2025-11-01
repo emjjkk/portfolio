@@ -115,7 +115,7 @@ export default function Header() {
           <a href="#">
             <FaGithub className="text-md text-slate-400 hover:text-blue-500" />
           </a>
-          <a href="#">
+          <a href="#"> 
             <FaBluesky className="text-md text-slate-400 hover:text-blue-500" />
           </a>
           <a href="#">

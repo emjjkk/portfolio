@@ -5,6 +5,7 @@ import Header from "@/components/header";
 import projects from "@/content/projects.json";
 import blogPosts from "@/content/blog.json";
 import { LuArrowUpRight, LuLoaderCircle } from "react-icons/lu";
+import SubscribeBox from "@/components/subscribe-box";
 
 interface BlogPost {
   slug: string;
@@ -58,8 +59,8 @@ export default function HomePage() {
   // ✅ Show spinner while preloading posts
   if (loading) {
     return (
-      <main className="w-[70%] h-screen flex items-center justify-center">
-        <LuLoaderCircle className="text-3xl animate-spin text-slate-500" />
+      <main className="w-full md:w-[70%] h-screen flex items-center justify-center">
+        <LuLoaderCircle className="text-3xl animate-spin text-neutral-500 dark:text-neutral-400" />
       </main>
     );
   }
@@ -68,7 +69,7 @@ export default function HomePage() {
     <div className="w-full md:w-[70%] h-screen overflow-y-scroll p-3 md:p-6 cs">
       <Header />
       <h1 className="text-3xl md:text-4xl my-5 w-full md:w-3/4">
-        Hey there 👋 I'm Emmanuel, a software developer currently specializing in
+        I'm Emmanuel, a software developer currently specializing in
         fullstack web and app development.
       </h1>
 
@@ -136,22 +137,17 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="md:flex gap-6 mt-6">
+      <div className="md:flex gap-6 mt-8">
         <div className="md:w-2/3 mb-4">
           <div className="flex flex-col gap-6">
             {posts.slice(0, visiblePosts).map((post, idx) => (
               <a href={`/b/${post.slug}`} key={idx} className="block">
-                <div className="flex gap-4 group mb-2 transition-colors">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-32 h-24 md:w-48 md:h-32 object-cover rounded-md flex-shrink-0"
-                  />
-                  <div className="flex flex-col justify-center">
-                    <h3 className="text-lg font-semibold mb-2">
+                <div className="flex gap-4 group mb-1 transition-colors">
+                  <div className="flex flex-col justify-center ">
+                    <h3 className="text-lg font-medium mb-2 hover:text-blue-500">
                       {post.title}
                     </h3>
-                    <p className="text-sm text-gray-600 mb-2 line-clamp-2">
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-2 line-clamp-2">
                       {post.preview}
                     </p>
                     <div className="flex items-center gap-3 text-xs text-gray-500">
@@ -177,28 +173,20 @@ export default function HomePage() {
           )}
         </div>
 
-        <div className="md:w-1/3">
+        <div className="md:w-1/3 mt-5">
           <div className="sticky top-0 space-y-4">
-            <div className="bg-blue-50 rounded-lg p-5">
+            <div className="bg-blue-50 dark:bg-neutral-700 dark:text-neutral-100 rounded-lg p-5">
               <h3 className="text-lg font-semibold mb-3">Subscribe, maybe?</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                I won't spam, but I'll drop you an email every once in a while
-                with things you might find interesting
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                No spam - just the occasional interesting thing.
               </p>
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <button className="w-full px-4 py-2 text-sm bg-blue-500 rounded-md text-white hover:bg-blue-600 transition-colors">
-                Subscribe
-              </button>
+              <SubscribeBox />
             </div>
-            <div className="bg-slate-100 rounded-lg p-5 flex items-center justify-center h-32">
+            <div className="bg-neutral-100 dark:bg-neutral-700 rounded-lg p-5 flex items-center justify-center h-32">
               ad.
             </div>
-            <span className="text-sm text-right text-slate-500">
-              Creation is a form of rebellion <br />© 2025 Emmanuel Alabi
+            <span className="text-sm text-right text-neutral-500 dark:text-neutral-400">
+              © 2025 Emmanuel Alabi
             </span>
           </div>
         </div>
