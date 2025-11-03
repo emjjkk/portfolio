@@ -68,11 +68,11 @@ export default function HomePage() {
   return (
     <div className="w-full md:w-[70%] h-screen overflow-y-scroll p-3 md:p-6 cs">
       <Header />
-      <h1 className="text-3xl md:text-4xl my-5 w-full md:w-3/4 mt-5 md:mt-12">
+      <h1 className="text-3xl md:text-4xl my-5 w-full md:w-3/4 mt-5 md:mt-6">
         I'm Emmanuel, a software developer currently specializing in
         full-stack web and app development.
       </h1>
-      <p className="text-md md:w-2/3 mb-8 md:mb-16">
+      <p className="text-md md:w-2/3 mb-8 md:mb-8">
         I'm a college student and software developer. I'm familiar with Javascript- (NextJS, Astro, Remix, etc) and Python (Flask, Django) based frameworks for web development. I can also build  mobile apps with React Native and other things like discord bots and chrome extensions.
       </p>
 
