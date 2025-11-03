@@ -1,7 +1,7 @@
 [
   {
     "slug": "building-a-youtube-downloader-with-python-flask",
-    "title": "Building a Lightweight Youtube Downloader Application with Flask + yt-dl",
+    "title": "Building a Youtube Downloader Application with Flask + yt-dlp",
     "image": "blob:https://medium.com/5569c7e6-2640-470f-8b45-5f7d686f27f7",
     "excerpt": "Tired of Spotify paywalls and sketchy download sites, I built a lightweight YouTube downloader using Flask, yt-dlp, and a pinch of JS. You can search videos or paste links, see thumbnails and details, and download audio (MP3) or video (MP4) locally. Minimal setup: Python + a few HTML/CSS/JS files, all running on your machine. Hosting on a server is tricky due to YouTube restrictions, but you can run it locally with a helper script for instant access. Respect creators and keep it personal-use only.",
     "date": "Nov 3, 2025",
