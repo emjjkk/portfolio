@@ -467,6 +467,11 @@ That means all you have to do is double-click this file and your downloader UI i
 
 If you’re on Windows, you can go the extra step and make a **shortcut** for `run_app.py`, set its icon (maybe a YouTube logo or something fun), and it’ll feel like a proper mini desktop app.
 
+## Links
+
+🔗 Source code [https://github.com/emjjkk/yt-downloader](https://github.com/emjjkk/yt-downloader)
+🔗 yt-dlp [https://github.com/yt-dlp/yt-dlp](https://github.com/yt-dlp/yt-dlp)
+
 If you made it this far, thanks for reading! Have a KitKat.
 
 
