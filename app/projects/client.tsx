@@ -27,19 +27,19 @@ export default function ProjectsPage() {
     <div className="md:w-[70%] h-screen overflow-y-scroll p-4 md:p-6 mx-auto cs">
       <Header />
 
-      <h1 className="text-3xl md:text-4xl my-5 md:w-3/4">
+      <h1 className="text-3xl md:text-4xl my-5 md:w-2/3">
         Here are some projects I'm building and maintaining.
       </h1>
-      <p className="text-sm text-gray-600 md:w-2/3 mb-8">
+      <p className="text-sm dark:text-neutral-300 text-gray-600 md:w-2/3 mb-8">
         Each one started as a random idea that refused to leave my head.
         I like experimenting — you’ll see a mix of tools, aesthetics, and little bits of chaos.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:w-3/3">
         {projectList.map((project, idx) => (
           <div
             key={idx}
-            className="relative group rounded-xl overflow-hidden bg-gray-50 border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300"
+            className="relative group rounded-xl overflow-hidden dark:bg-neutral-800 dark:border-neutral-700 bg-gray-50 border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300"
           >
             {/* Visual Banner */}
             <div className="relative h-40 overflow-hidden">
@@ -53,7 +53,7 @@ export default function ProjectsPage() {
                 <img
                   src={project.logo}
                   alt={project.title}
-                  className="w-10 h-10 rounded-md border border-white/30"
+                  className="w-10 h-10 rounded-md border dark:border-black/30 border-white/30"
                 />
                 <h2 className="text-white text-lg font-semibold">
                   {project.title}
@@ -63,7 +63,7 @@ export default function ProjectsPage() {
 
             {/* Content */}
             <div className="p-4 flex flex-col gap-2">
-              <p className="text-sm text-gray-600 line-clamp-3 leading-relaxed">
+              <p className="text-sm dark:text-neutral-200 text-gray-600 line-clamp-3 leading-relaxed">
                 {project.description}
               </p>
 
@@ -87,8 +87,8 @@ export default function ProjectsPage() {
               )}
 
               {/* Action bar */}
-              <div className="flex items-center justify-between mt-3">
-                <div className="flex gap-3 text-sm text-gray-700">
+              <div className="items-center justify-between mt-3">
+                <div className="flex gap-3 text-sm dark:text-neutral-300 text-gray-700">
                   {project.repo && (
                     <a
                       href={project.repo}
@@ -119,12 +119,6 @@ export default function ProjectsPage() {
             </div>
           </div>
         ))}
-      </div>
-
-      <div className="flex justify-end mt-10">
-        <span className="text-sm text-right text-slate-500 block">
-          Creation is a form of rebellion <br />© 2025 Emmanuel Alabi
-        </span>
       </div>
     </div>
   );

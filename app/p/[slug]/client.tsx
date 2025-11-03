@@ -36,7 +36,7 @@ export default function ClientBlogPage({ slug }: ClientBlogPageProps) {
 
       if (meta) {
         try {
-          const response = await fetch(`/b/${slug}.md`);
+          const response = await fetch(`/p/${slug}.md`);
           if (!response.ok) throw new Error("Failed to fetch markdown file");
           const markdown = await response.text();
           setPostContent(markdown);
@@ -63,22 +63,16 @@ export default function ClientBlogPage({ slug }: ClientBlogPageProps) {
       <Header />
 
       {/* Post Header */}
-      <div className="mb-6">
-        <h1 className="md:w-2/3 text-3xl md:text-4xl mt-5 font-bold mb-5">
+      <div className="mb-3">
+        <h1 className="md:w-2/3 text-3xl md:text-4xl mt-5 mb-5">
           {postMeta.title}
         </h1>
-        <div className="md:w-2/3 mb-5 flex items-center gap-3 text-sm text-gray-500">
+        <div className="md:w-2/3 flex items-center gap-3 text-sm text-gray-500">
           <span>{postMeta.date}</span>
           <span>•</span>
           <span>{postMeta.readTime}</span>
         </div>
-        {postMeta.image && (
-          <img
-            src={postMeta.image}
-            alt={postMeta.title}
-            className="md:w-2/3 h-auto object-cover rounded-md mt-4"
-          />
-        )}
+        
       </div>
 
       <div className="md:flex gap-6">
@@ -123,7 +117,7 @@ export default function ClientBlogPage({ slug }: ClientBlogPageProps) {
         </div>
 
         {/* Sidebar */}
-        <div className="md:w-1/3">
+        <div className="md:w-1/3 mt-5">
           <div className="sticky top-0 space-y-4">
             <div className="bg-blue-50 dark:bg-neutral-700 dark:text-neutral-100 rounded-lg p-5">
               <h3 className="text-lg font-semibold mb-3">Subscribe, maybe?</h3>

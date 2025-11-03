@@ -1,99 +1,65 @@
-"use client";
-import Header from "@/components/header";
-import { useState } from "react";
+"use client"
+import Header from '@/components/header'
+import { AiFillDiscord } from 'react-icons/ai'
+import { FiMail, FiPhone, FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi'
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    topic: "",
-    message: "",
-  });
+    return (
+        <>
+            <div className="md:w-[70%] h-screen overflow-y-scroll p-4 md:p-6 mx-auto cs">
+                <Header />
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+                {/* Intro */}
+                <h1 className="text-3xl md:text-4xl my-5 md:w-2/3 font-semibold">
+                    Let's get in touch
+                </h1>
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Message sent! (Not really, just demo)");
-    setFormData({ name: "", email: "", topic: "", message: "" });
-  };
+                <p className="text-md md:w-2/3 mb-6">
+                    Got a project, collab, or just wanna say hey? Hit me up! I check my messages regularly and love chatting about web dev, cybersecurity, or basically anything tech.
+                </p>
 
-  return (
-    <div className="md:w-[70%] h-screen overflow-y-scroll p-4 md:p-6 mx-auto cs">
-      <Header />
+                {/* Contact Details */}
+                <section className="my-10 md:w-2/3 space-y-6">
+                    <div className="flex items-center gap-3">
+                        <FiMail className="text-xl" />
+                        <a href="mailto:youremail@example.com" className="text-md hover:underline">
+                            emmanuel.opalabi@gmail.com
+                        </a>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <FiGithub className="text-xl" />
+                        <a href="https://github.com/yourusername" target="_blank" rel="noreferrer" className="text-md hover:underline">
+                            github.com/emjjkkk
+                        </a>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <FiLinkedin className="text-xl" />
+                        <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noreferrer" className="text-md hover:underline">
+                            linkedin.com/in/emjjkk
+                        </a>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <AiFillDiscord className="text-xl" />
+                        <a href="https://twitter.com/yourusername" target="_blank" rel="noreferrer" className="text-md hover:underline">
+                            @e.mjjkk
+                        </a>
+                    </div>
+                </section>
 
-      <h1 className="text-3xl md:text-4xl mt-5 mb-2 md:w-3/4">Get in Touch</h1>
-      <p className="text-md text-gray-600 md:w-2/3 mb-8">
-        If you want to collaborate, ask a question, just say hi, you can reach me here.
-      </p>
-
-      <div className="">
-        {/* Form: 2/3 */}
-        <form
-          className="md:w-2/3 flex flex-col gap-2"
-          onSubmit={handleSubmit}
-        >
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-
-          <select
-            name="topic"
-            value={formData.topic}
-            onChange={handleChange}
-            required
-            className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          >
-            <option value="">Select Topic</option>
-            <option value="collaboration">Collaboration</option>
-            <option value="question">Work</option>
-            <option value="feedback">I just want to say hi</option>
-            <option value="feedback"></option>
-            <option value="other">Other</option>
-          </select>
-
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            rows={6}
-            className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition"
-          >
-            Send Message
-          </button>
-        </form>
-      </div>
-      <div className="flex mt-5">
-        <span className="text-sm text-slate-500 block">
-          Creation is a form of rebellion <br />© 2025 Emmanuel Alabi
-        </span>
-      </div>
-    </div>
-  );
+                {/* CTA */}
+                <section className="my-10 md:w-2/3">
+                    <h2 className="text-xl font-semibold mb-3">Want to work together?</h2>
+                    <p className="text-md mb-4 md:w-3/4">
+                        If you have a project idea, a freelance gig, or just want to collab on something wild, drop me a message. I usually respond pretty fast — let's make something cool!
+                    </p>
+                    <a 
+                        href="mailto:youremail@example.com" 
+                        className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                    >
+                        Say Hello
+                    </a>
+                </section>
+            </div>
+        </>
+    )
 }

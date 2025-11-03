@@ -8,42 +8,69 @@ export default function AboutPage() {
             <div className="md:w-[70%] h-screen overflow-y-scroll p-4 md:p-6 mx-auto cs">
                 <Header />
 
-                {/* Body Text */}
+                {/* Intro */}
                 <h1 className="text-3xl md:text-4xl my-5 md:w-3/4">Allow me to introduce myself</h1>
 
-                {/* Profile Card */}
-                <div className="md:w-2/3 flex flex-col md:flex-row items-center bg-gray-50 rounded-2xl shadow-md p-6 mb-5 gap-6 border border-gray-200">
-                    {/* Profile Image */}
-                    <div className="flex-shrink-0">
-                        <img
-                            src="https://media.licdn.com/dms/image/v2/D4D03AQGCY-25SW6aeQ/profile-displayphoto-shrink_200_200/B4DZXYpaG5HIAY-/0/1743096489400?e=1762992000&v=beta&t=mNLt4PQiRq5btsOw2sBfO6MK-i8hccSDTIvOWAG56Do" // replace with your image path
-                            alt="Profile Picture"
-                            width={140}
-                            height={140}
-                            className="rounded-full object-cover border-4 border-gray-200"
-                        />
+                <p className="text-md md:w-2/3 mb-2">
+                    Heyo, I'm a college student and software developer based for now in Rwanda, and I'm currently focusing on full-stack web development. I'm familiar with Javascript (NextJS, Astro, Remix, etc) and Python (Flask, Django) based frameworks for web development. I can also build cross-platform mobile apps with React Native and other things like Discord bots, Chrome extensions, and Tampermonkey scripts. I also have a sound background in Cybersecurity.
+                </p>
+                <p className="text-md md:w-2/3 mb-6">
+                    When I'm not coding, I'm most likely playing games (I play FPS and ARPG games). I'm also a supercar and superbike fanatic, and I'll use a Suzuki GSX-S1000 GX to commute between home and the Tencent headquarters one day — trust.
+                </p>
+
+                {/* Education Section */}
+                <section className="my-10 md:w-2/3">
+                    <div className="flex items-center">
+                        <h2 className="text-xl font-semibold mb-4">Education</h2>
+                        <div className="h-[1.5px] flex-1 ml-4 mb-[4px] bg-neutral-300 dark:bg-neutral-600 rounded-full"></div>
                     </div>
 
-                    {/* Info Section */}
-                    <div className="flex flex-col space-y-2 text-gray-800">
-                        <h2 className="text-2xl font-semibold">Emmanuel Alabi</h2>
-                        <p className="text-sm text-gray-500">🇹🇭 Thai / 🇳🇬 Nigerian • Based in 🇷🇼 Rwanda</p>
+                    <div className="space-y-6">
+                        <div>
+                            <h3 className="text-lg font-semibold">BSc Computer Science</h3>
+                            <p className="text-sm opacity-80 mb-1">University of the People — 2024 – Present</p>
+                            <p className="text-md opacity-90">
+                                Building a strong foundation in software design, algorithms, and data structures while balancing real-world coding experience through freelance and open-source work.
+                            </p>
+                        </div>
 
-                        <div className="text-sm mt-3">
-                            <p><span className="font-semibold">Skills:</span> Software engineering, Video editing, Writing</p>
-                            <p><span className="font-semibold">Tech Stack:</span> Next.js, Astro, Remix, Flask, Django</p>
-                            <p><span className="font-semibold">Likes:</span> Gaming (FPS, ARPG), Kdrama, Motorbikes, Supercars</p>
-                            <p><span className="font-semibold">Dislikes:</span> Slow Wi-Fi, messy UIs, and unhandled promises 😤</p>
+                        <div>
+                            <h3 className="text-lg font-semibold">MCIT Cybersecurity Certificate</h3>
+                            <p className="text-sm opacity-80 mb-1">IBM Skills Build — November 2025</p>
+                            <p className="text-md opacity-90">
+                                Covered network defense, penetration testing fundamentals, and secure system architecture with hands-on labs and practical assessments.
+                            </p>
                         </div>
                     </div>
-                </div>
+                </section>
 
-                <p className="text-md md:w-2/3 mb-2">
-                    Heyo, I'm a college student and software developer based for now in Rwanda, and I'm currently focusing on full-stack web development. I'm familiar with Javascript- (NextJS, Astro, Remix, etc) and Python (Flask, Django) based frameworks for web development. I can also build cross-platform mobile apps with React Native and other things like discord bots, chrome extensions, and tampermonkey scripts. I also have a sound background in Cybersecurity.
-                </p>
-                <p className="text-md md:w-2/3 mb-2">
-                    When I'm not coding, I'm most likely playing games (I play FPS and ARPG games). I'm also a supercar and superbike fanatic, and I'll use a Suzuki GSX-S1000 GX to commute between home and the Tencent headquarters one day trust.
-                </p>
+                {/* Experience Section */}
+                <section className="my-10 md:w-2/3 mb-20">
+                    <div className="flex items-center">
+                        <h2 className="text-xl font-semibold mb-4">Experience</h2>
+                        <div className="h-[1.5px] flex-1 ml-4 mb-[4px] bg-neutral-300 dark:bg-neutral-600 rounded-full"></div>
+                    </div>
+
+                    <div className="space-y-6">
+                        <div>
+                            <h3 className="text-lg font-semibold">Web Developer</h3>
+                            <p className="text-sm opacity-80 mb-1">Comet Digital Ltd — Rwanda, 2022 – 2024</p>
+                            <p className="text-md opacity-90">
+                                Developed client websites, dashboards, and internal tooling using Next.js, Django, and Tailwind CSS. 
+                                Worked on performance optimizations, responsive UI, and integrating third-party APIs.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 className="text-lg font-semibold">Freelance Full-Stack Developer</h3>
+                            <p className="text-sm opacity-80 mb-1">Remote — 2024 – Present</p>
+                            <p className="text-md opacity-90">
+                                Designed and shipped indie web apps, Discord bots, and automation tools. 
+                                Specialized in building lightweight systems with Redis, TypeScript, and AI integrations for personal or niche community use.
+                            </p>
+                        </div>
+                    </div>
+                </section>
             </div>
         </>
     )

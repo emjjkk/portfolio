@@ -29,7 +29,7 @@ export default function HomePage() {
         const postsWithContent = await Promise.all(
           blogPosts.map(async (post: BlogPost) => {
             try {
-              const response = await fetch(`/b/${post.slug}.md`);
+              const response = await fetch(`/p/${post.slug}.md`);
               const markdown = await response.text();
               const preview =
                 markdown
@@ -68,80 +68,24 @@ export default function HomePage() {
   return (
     <div className="w-full md:w-[70%] h-screen overflow-y-scroll p-3 md:p-6 cs">
       <Header />
-      <h1 className="text-3xl md:text-4xl my-5 w-full md:w-3/4">
+      <h1 className="text-3xl md:text-4xl my-5 w-full md:w-3/4 mt-5 md:mt-12">
         I'm Emmanuel, a software developer currently specializing in
-        fullstack web and app development.
+        full-stack web and app development.
       </h1>
-
-      {/* Horizontal Scroll Projects */}
-      <div className="flex items-center w-full mt-6">
-        <h1 className="text-xl mb-2 whitespace-nowrap">Recent projects</h1>
-      </div>
-
-      <div className="md:flex items-end justify-between mb-5">
-        <div className="md:w-2/3 mb-4 md:mb-0">
-          <p className="text-sm">
-            These are some of the most recent projects I've been building or
-            maintaining in my free time. Since I'm a big fan of open-source,
-            most of my projects are public on Github.
-          </p>
-        </div>
-        <a href="#">
-          <button className="px-4 py-2 text-sm bg-blue-500 rounded-lg text-white">
-            See all projects
-          </button>
-        </a>
-      </div>
-
-      <div className="hide-scroll flex gap-4 overflow-x-auto pb-4 mb-5">
-        {latestProjects.map((project, idx) => (
-          <div
-            key={idx}
-            className="relative flex-shrink-0 w-[300px] h-[180px] md:w-[520px] md:h-[280px] rounded-md overflow-hidden bg-cover bg-center"
-            style={{ backgroundImage: `url(${project.background})` }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
-            <div className="absolute bottom-0 left-0 w-full p-4 flex items-end gap-3 text-white">
-              <img
-                src={project.logo}
-                alt={project.title}
-                width={62}
-                height={62}
-                className="rounded-lg object-cover border border-white/20"
-              />
-              <div className="flex flex-col justify-end">
-                <h2 className="text-lg font-semibold">{project.title}</h2>
-                <p className="text-sm text-gray-200 line-clamp-2">
-                  {project.description}
-                </p>
-              </div>
-              <div className="h-full flex flex-col items-center justify-center text-3xl">
-                <a href={project.repo}>
-                  <LuArrowUpRight />
-                </a>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      <p className="text-md md:w-2/3 mb-8 md:mb-16">
+        I'm a college student and software developer. I'm familiar with Javascript- (NextJS, Astro, Remix, etc) and Python (Flask, Django) based frameworks for web development. I can also build  mobile apps with React Native and other things like discord bots and chrome extensions.
+      </p>
 
       {/* Blog Section */}
-      <div className="mt-5">
-        <h1 className="text-xl mb-2 whitespace-nowrap">Blog posts</h1>
-        <div className="md:w-2/3">
-          <p className="text-sm">
-            I occasionally write about my project build processes and other
-            things related to software engineering — my posts are available over
-            on Medium too.
-          </p>
-        </div>
-      </div>
-
-      <div className="md:flex gap-6 mt-8">
-        <div className="md:w-2/3 mb-4">
+      <div className="md:flex gap-10">
+        <div className="md:w-2/3 mb-8">
+          <div className="mt-2 mb-6 flex items-center">
+            <h1 className="text-xl mb-2 whitespace-nowrap">Latest blog posts</h1>
+            <div className="h-[1.5px] flex-1 ml-4 mb-[4px] bg-neutral-300 dark:bg-neutral-600 rounded-full"></div>
+          </div>
           <div className="flex flex-col gap-6">
             {posts.slice(0, visiblePosts).map((post, idx) => (
-              <a href={`/b/${post.slug}`} key={idx} className="block">
+              <a href={`/p/${post.slug}`} key={idx} className="block">
                 <div className="flex gap-4 group mb-1 transition-colors">
                   <div className="flex flex-col justify-center ">
                     <h3 className="text-lg font-medium mb-2 hover:text-blue-500">
