@@ -1,5 +1,6 @@
+import Script from "next/script";
 import type { Metadata } from "next";
-import { Outfit, Geist_Mono, Nunito_Sans } from "next/font/google";
+import { Outfit, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import Navigation from "@/components/navigation";
@@ -26,6 +27,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Umami Analytics Script */}
+        <Script
+          src="https://cloud.umami.is/script.js"
+          data-website-id="5a665f32-69be-40cf-abea-7923b603a548"
+          strategy="afterInteractive"
+        />
+      </head>
       <body
         className={`${geistSans.className} ${geistMono.variable} antialiased w-full h-screen flex bg-white text-black dark:bg-neutral-950 dark:text-neutral-100`}
       >
