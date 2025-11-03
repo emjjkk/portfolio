@@ -1,21 +1,20 @@
-Here’s a little thing I thought would be a nice touch for my portfolio website (or really, any social app): what if people could see what I was doing right now? Maybe I’m listening to a specific song on YouTube? Editing a file in GitHub Codespaces?
+In this post, I want to explain how to show what you're doing at any given moment in your browser, such as livestreaming on Youtube or playing a game, live on your own webpage. 
 
-A while back, pulling something like this off would’ve been a pain. I’d have to go through official API docs (like Spotify’s) just to figure out if it was even possible. Half the time, it wasn’t. And when it was, I’d have to write piles of code for each individual platform — just to show a tiny “Now Watching” block somewhere on my site.
-It was messy, overkill, and not really worth it for a simple aesthetic touch on a biolink.
+A while back, pulling something like this off would’ve been a pain. I’d have to go through official API docs (like Spotify’s) just to figure out if it was even possible. Half the time, it wasn’t. And when it was, I’d have to write piles of code for each individual platform — just to show a tiny “Now Watching” block somewhere on my site. It was messy, overkill, and not really worth it for, say, a simple aesthetic touch on a biolink.
 
-But now, there’s a way easier, all-in-one way to do it. One setup to fetch all your activity, with full control over what shows and how it looks.
+But now, there’s a an easier, all-in-one way to do it. One setup to fetch all your activity, with full control over what shows and how it looks.
 
-Let me show you how I did it using everyone’s favorite web framework — NextJS.
+Let me show you how to do it using everyone’s favorite web framework — NextJS. If you use a different framework, the steps will likely be similar.
 
 ## Getting Started with PreMiD
 
-[PreMiD](https://premid.app) is a browser extension that was originally designed to show your live activity on your Discord profile. It has an open-source community driven list of activities which cover detecting activities all kinds of websites including popular sites such as Netflix, Spotify and Disney Plus, as well as some lesser known ones. If somehow a website you use often isn't detected, you can add it yourself. It works by detecting what website you have opened in your browser and which page you're on, and allows you to configure it to show only the activities you want, or temporarily turn it off entirely.
+[PreMiD](https://premid.app) is a browser extension that was originally designed to show your live activity on your Discord profile by detecting the tabs open in your browser. It has an open-source community driven list of activities which cover detecting activities from of websites including popular sites such as Netflix, Spotify and Disney Plus, as well as some lesser known ones. It works by detecting what website you have opened in your browser and which page you're on, and allows you to configure it to show only the activities you want, or temporarily turn it off entirely.
 
 Despite being built around Discord rich presence, PreMiD recently added a new feature which now makes it possible to display your activity on anywhere you can embed code. You do, however, still need a Discord account, so if you don't have one already, now is probably a good time to create one.
 
-To get started, you'll want to install PreMiD on whichever browser you use the most. It is available on Chrome, Edge, Firefox, and Safari, as well as other Chromium-based browsers.
+To get started, you'll want to [install PreMiD](https://premid.app/downloads) on whichever browser you use the most. It is available on Chrome, Edge, Firefox, and Safari, as well as other Chromium-based browsers.
 
-Upon install, you'll see an onboarding page prompting you to connect to your discord account.
+Upon install, you'll see an onboarding page prompting you to connect to your Discord account.
 
 <img width="100%" height="auto" alt="image" src="https://github.com/user-attachments/assets/181a9212-6b5d-4bc7-bc2e-a74018dca41a" />
 
@@ -25,13 +24,13 @@ Tap **Connect with Discord** and click **Authorize**.
 
 Once your discord account is connected, PreMiD should already be set up and working. I don't mean to state the obvious but pinning it to your toolbar will be something your future self thanks you for.
 
-If you tap the extension's icon, and tap the settings icon in the top right of a popup, then scroll down, note that there's an option named Activity Forwarding and when you enable it, you're given an input field to provide a Forwarding URL. This is what we'll be using to connect it to our own site.
+If you tap the extension's icon, and tap the settings icon in the top right of a popup, then scroll down, note that there's an option named **Activity Forwarding** and when you enable it, you're given an input field to provide a **Forwarding URL**. We'll come back to this. This is what we'll be using to connect it to our own site.
 
 <img width="100%" height="auto" alt="image" src="https://github.com/user-attachments/assets/15400091-530b-4d21-bbca-cf4c8010a115" />
 
-Let's take a quick look at exactly how this will look under the hood.
+Now, I don't want to just lay out the steps. Let's take a quick look at exactly how this will look under the hood, so that you'll have a good idea of how this works regardless of what technologies you'll be using.
 
-Each time you start an activity, like watching a video on youtube or reading a webcomic, PreMiD will send a POST request to the URL you specified containing JSON data resembling the following:
+Each time you start an activity, like watching a video on youtube or reading a webcomic, PreMiD will send a `POST` request to the URL you specified containing JSON data resembling the following:
 
 ```json
 {
@@ -70,7 +69,7 @@ Each time you start an activity, like watching a video on youtube or reading a w
 
 This contains all the information about your currently detected activity, as well as some links and helpful image assets.
 
-And when you stop doing that activity, PreMiD will send a POST request with the following JSON body.
+When you stop doing that activity, PreMiD will send a POST request with the following JSON body.
 
 ```json
 {
@@ -85,25 +84,25 @@ And when you stop doing that activity, PreMiD will send a POST request with the 
 
 The awkwardness of this is that instead of us being able to hit an endpoint to fetch our activity on demand, PreMid hits our endpoint to give us the information whenever we start or stop it. They've essentially shifted the responsibility of storing the data onto us, meaning you'll need somewhere (like a small server or database) to store the latest state and serve it to your site.
 
-For the rest of this guide, we'll be using Redis.
+For the rest of this guide, we'll be using Redis for this.
 
 ## Setting up Redis
 
-The easiest way to do this is with [Upstash](https://upstash.com). Visit their website and sign in with GitHub or Google. It takes less than a minute, and you'll land on your dashboard. Click New Database on the top right of the dashboard to create your Redis instance. Give it a name and pick a region close to you.
+The easiest way to start a Redis database this is with [Upstash](https://upstash.com). Visit their website and sign in with GitHub or Google. It takes less than a minute, and you'll land on your dashboard. Click **New Database** on the top right of the dashboard to create your Redis instance. Give it a name and pick a region close to you.
 
 <img width="100%" height="auto" alt="image" src="https://github.com/user-attachments/assets/258dcd71-0999-45e2-a8e1-f66e89944bcd" />
 
 When prompted to select a plan, you can go ahead and stick with the free plan. It provides more than we need.
 
-Upon successful creation of the database, we'll be redirected to the newly created dashboard for our new database. Under the section named Connect, make sure to copy your TCP endpoint. It's important to copy the TCP endpoint and not the HTTPS one since you may run into unexpected issues when connecting your application otherwise.
+Upon successful creation of the database, we'll be redirected to the newly created dashboard for our new database. Under the section named **Connect**, make sure to copy your **TCP endpoint**. It's important to copy the TCP endpoint and not the HTTPS one, or you may run into unexpected issues when connecting your application otherwise.
 
 <img width="100%" height="auto" alt="image" src="https://github.com/user-attachments/assets/d1cd83a8-1e85-473c-a6ea-a77d2fb52424" />
 
-Paste it in your .env.local file as REDIS_URL.
+Paste it in your `.env.local` file as `REDIS_URL`.
 
 ## Creating your Endpoint
 
-In your NextJS existing project, you'll want to install the following dependency (if you don't already have one, create one by executing `npx create-next-app@latest ./`):
+In your NextJS existing project, you'll want to install the following dependency. (If you don't already have a NextJS project, you can create one by executing `npx create-next-app@latest ./`):
 
 ```yaml
 npm install --save ioredis
@@ -150,10 +149,10 @@ export async function GET() {
 ```
 
 This file defines a Next.js API route that connects to Redis and does two things:
-- POST: saves your current activity (from PreMiD)
-- GET: lets your site or app fetch that saved activity later
+- `POST`: saves your current activity (from PreMiD)
+- `GET`: lets your site or app fetch that saved activity later
 
-If you want to test your endpoint on a development server, you can use a tunelling tool like ngrok to make your dev server public after you run `npm run dev`:
+If you want to test your endpoint on a development server, you can use a tunelling tool like **ngrok** to make your dev server public after you run `npm run dev`:
 
 ```yaml
 npm install -g ngrok
@@ -174,9 +173,9 @@ Better yet, go ahead and start an activity, you'll see all the data displayed he
 
 <img width="100%" height="auto" alt="image" src="https://github.com/user-attachments/assets/63f7875f-6633-4df3-97b7-f40f2ed1945c" />
 
-Now that we have a functioning endpoint to fetch our live activity from, a lot of devs, I imagine, will carry on by themselves here, since displaying data JSON data from a GET request is basic stuff. If that's what you're about to do, thanks for reading this far! I cross-post my content to my website emjjkk.tech and it would make my day for you to visit or drop me a message on Discord @e.mjjkk or follow my Github @emjjkk. I hope you found this article to be of value :)
+Now that we have a functioning endpoint to fetch our live activity from, a lot of devs will probably will carry on by themselves here, since displaying data JSON data from a GET request is basic stuff. If that's what you're about to do, thanks for reading this far! Feel free to drop me a message on Discord @e.mjjkk or follow my Github @emjjkk. I hope you found this article to be of value :)
 
-If you still want to see how to display this raw data on your site, then read on!
+If you still want to see how to display this raw data on your site, then read on.
 
 ## Displaying your activity
 
@@ -184,7 +183,7 @@ Now that we can fetch live data of our activity, it's time to display it.
 
 > In my example, I built out the API endpoint as part of my main website, but I left it public, meaning that I can access this same endpoint from other websites too, without having to redo all the steps I completed so far. This might be something you want to do too, especially since PreMiD doesn't allow you (as of November 2025) to input more than one Forwarding URL. Even if they did, why repeat hard work?
 
-I'll be displaying my activity in `app/page.tsx` but the approach is the same anywhere. In true spirit of the best practices of TS, I'll start by creating an Interface like so.
+I'll be displaying my activity in `app/page.tsx` but the approach is the same anywhere. Since I'm using TS, I'll start by creating an Interface like so.
 
 ```typescript
 interface Activity {
@@ -198,7 +197,7 @@ interface Activity {
 }
 ```
 
-Then, using react's `useState` and `useEffect` utilites, we can fetch and store the activity data from our own endpoint and make it update in realtime like so:
+Then, using react's `useState` and `useEffect` utilites, we can fetch and store the activity data from our own endpoint and make it update in periodically like so:
 
 ```typescript
 const [activity, setActivity] = useState<Activity | null>(null);
@@ -365,7 +364,7 @@ And here's how it looks:
 
 <img width="100%" height="auto" alt="image" src="https://github.com/user-attachments/assets/4137d73e-6d1d-400f-bd68-53956c6b31e2" />
 
-And we're done. We now have a page that shows our live activity, and better yet, we have a reusable endpoint to show our live activity on any website.
+Done. We now have a page that shows our live activity, and better yet, we have a reusable endpoint to show our live activity on any website.
 
 ## Links & Additional Notes
 
@@ -375,7 +374,7 @@ And we're done. We now have a page that shows our live activity, and better yet,
 
 🔗 UpStash [https://upstash.com/](https://upstash.com/)
 
-**More customization.** If you want to have full control over exactly which activities show and how it displays, all of that can be controlled in the UI of the PreMiD extension. There is also a [PreMiD Activity Library](https://premid.app/library) where you can select detection for over 1000 websites. I encourage you to explore these, there are a lot more features of PreMiD I haven't covered.
+**More customization.** If you want to have full control over exactly which activities show and how it displays, all of that can be done in the UI of the PreMiD extension. There is also a [PreMiD Activity Library](https://premid.app/library) where you can select detection for over 1000 websites. I encourage you to explore these, there are a lot more features of PreMiD I haven't covered.
 
 **Performance pitfalls.** PreMiD can cause severe lag in low-end devices, meaning that your browser would become slow, or you may have trouble playing videos from youtube.
 
@@ -383,10 +382,7 @@ And we're done. We now have a page that shows our live activity, and better yet,
 
 **Discord Activity.** As of November 2025, your activity will inevitably also show in your discord profile as well as on your website, and you cannot really separate it to have one but not the other. Not a problem, but something to know.
 
-
-Thanks for reading! I hope you found this basic guide of some value. Please consider following for more articles like this in the future. I plan to be writing these on a weekly basis.
-
-If you have any questions, or want to collaborate, feel free to reach out to me. I'm a software developer and college student, and I'm always open to connect and work together on new projects.
+Thanks for reading! I hope you found this basic guide of some value. Please consider following for more articles like this in the future. I plan to be writing these on a weekly basis. Hopefully I'm a man of my word
 
 
 
