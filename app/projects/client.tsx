@@ -4,11 +4,12 @@ import Header from "@/components/header";
 import { LuArrowUpRight } from "react-icons/lu";
 import { FaGithub } from "react-icons/fa";
 import projects from "@/content/projects.json";
+import { div } from "framer-motion/client";
 
 interface Project {
   title: string;
   description: string;
-  background: string;
+  images?: string[];
   logo: string;
   demo?: string;
   repo?: string;
@@ -18,103 +19,110 @@ interface Project {
 
 export default function ProjectsPage() {
   const [projectList, setProjectList] = useState<Project[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+
+  const categories = ["All", "Web", "Mobile", "Scripts", "Integration", "Blockchain"];
 
   useEffect(() => {
     setProjectList(projects);
   }, []);
+
+  const filteredProjects = selectedCategory === "All" 
+    ? projectList 
+    : projectList.filter(project => project.category === selectedCategory);
 
   return (
     <div className="md:w-[70%] h-screen overflow-y-scroll p-4 md:p-6 mx-auto cs">
       <Header />
 
       <h1 className="text-3xl md:text-4xl my-5 md:w-2/3">
-        Here are some projects I'm building and maintaining.
+        Projects
       </h1>
-      <p className="text-sm dark:text-neutral-300 text-gray-600 md:w-2/3 mb-8">
-        Each one started as a random idea that refused to leave my head.
-        I like experimenting — you’ll see a mix of tools, aesthetics, and little bits of chaos.
+      <p className="text-sm dark:text-neutral-300 text-gray-600 md:w-2/3 mb-5">
+        Here are some projects I'm working on or maintaining. Feel free to check out the code repositories and live demos!
       </p>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:w-3/3">
-        {projectList.map((project, idx) => (
-          <div
-            key={idx}
-            className="relative group rounded-xl overflow-hidden dark:bg-neutral-800 dark:border-neutral-700 bg-gray-50 border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300"
+      
+      <div className="flex items-center gap-2 mb-6 flex-wrap">
+        {categories.map((category) => (
+          <button
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+            className={`px-3 py-1 text-sm transition-colors ${
+              selectedCategory === category
+                ? "bg-neutral-700 dark:bg-neutral-300 text-white dark:text-black"
+                : "bg-neutral-200 dark:bg-neutral-700 text-black dark:text-white hover:bg-neutral-300 dark:hover:bg-neutral-600"
+            }`}
           >
-            {/* Visual Banner */}
-            <div className="relative h-40 overflow-hidden">
-              <img
-                src={project.background}
-                alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
-              <div className="absolute bottom-3 left-3 flex items-center gap-2">
-                <img
-                  src={project.logo}
-                  alt={project.title}
-                  className="w-10 h-10 rounded-md border dark:border-black/30 border-white/30"
-                />
-                <h2 className="text-white text-lg font-semibold">
-                  {project.title}
-                </h2>
+            {category}
+          </button>
+        ))}
+      </div>
+
+      <div className="md:w-2/3">
+        {filteredProjects.map((project, idx) => (
+          <div key={idx} className="flex flex-col">
+            {/* Images at the top */}
+            {project.images && project.images.length > 0 && (
+              <div className="flex gap-2 mb-3 overflow-x-auto hide-scroll">
+                {project.images.map((image, imgIdx) => (
+                  <img
+                    key={imgIdx}
+                    src={image}
+                    alt={`${project.title} screenshot ${imgIdx + 1}`}
+                    className="h-32 border border-neutral-500 object-cover flex-shrink-0 border-[0.5px]"
+                  />
+                ))}
               </div>
-            </div>
+            )}
 
-            {/* Content */}
-            <div className="p-4 flex flex-col gap-2">
-              <p className="text-sm dark:text-neutral-200 text-gray-600 line-clamp-3 leading-relaxed">
-                {project.description}
-              </p>
-
-              {/* Stack tags */}
-              {project.stack && (
-                <div className="flex flex-wrap gap-1 mt-1">
-                  {project.stack.slice(0, 4).map((tech, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="px-2 py-[2px] text-[11px] bg-gray-300 rounded-md text-gray-700"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.stack.length > 4 && (
-                    <span className="text-[11px] text-gray-500">
-                      +{project.stack.length - 4}
-                    </span>
-                  )}
+            {/* Logo, title, description, and links */}
+            <div className="flex gap-3">
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-1">
+                  <h3 className="text-lg font-medium">{project.title}</h3>
+                  <span className="text-sm text-neutral-500 dark:text-neutral-400 uppercase">{project.category}</span>
                 </div>
-              )}
+                <p className="text-sm dark:text-neutral-400 text-gray-600 mb-3">
+                  {project.description}
+                </p>
+                
+                {/* Stack tags */}
+                {project.stack && project.stack.length > 0 && (
+                  <div className="flex gap-2 flex-wrap mb-3">
+                    {project.stack.map((tech, techIdx) => (
+                      <span
+                        key={techIdx}
+                        className="text-xs px-2 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
 
-              {/* Action bar */}
-              <div className="items-center justify-between mt-3">
-                <div className="flex gap-3 text-sm dark:text-neutral-300 text-gray-700">
-                  {project.repo && (
-                    <a
-                      href={project.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 hover:text-black transition"
-                    >
-                      <FaGithub size={14} /> Repository
-                    </a>
-                  )}
+                {/* Links */}
+                <div className="flex gap-3">
                   {project.demo && (
                     <a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 hover:text-blue-600 transition"
+                      className="flex items-center gap-1 text-sm hover:underline"
                     >
-                      <LuArrowUpRight size={14} /> Live Demo
+                      Demo <LuArrowUpRight className="w-4 h-4" />
+                    </a>
+                  )}
+                  {project.repo && (
+                    <a
+                      href={project.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-sm hover:underline"
+                    >
+                      <FaGithub className="w-4 h-4" /> Code
                     </a>
                   )}
                 </div>
-                {project.category && (
-                  <span className="text-[11px] text-gray-400 uppercase tracking-wide">
-                    {project.category}
-                  </span>
-                )}
               </div>
             </div>
           </div>
