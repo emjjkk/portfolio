@@ -60,7 +60,7 @@ export default function ProjectsPage() {
 
       <div className="md:w-2/3">
         {filteredProjects.map((project, idx) => (
-          <div key={idx} className="flex flex-col">
+          <div key={idx} className="flex flex-col mb-4">
             {/* Images at the top */}
             {project.images && project.images.length > 0 && (
               <div className="flex gap-2 mb-3 overflow-x-auto hide-scroll">
