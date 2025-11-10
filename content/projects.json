@@ -28,7 +28,7 @@
     "demo": "https://dreamweaverdiscord.vercel.app",
     "stack": ["Next.js", "DiscordJS", "HuggingFace"],
     "category": "Discord Bot"
-  }
+  },
   {
     "title": "Spinnn",
     "description": "Simple spinning wheel app I created with React and Vite. Nothing special - just option and color customization, and localstorage recording",
