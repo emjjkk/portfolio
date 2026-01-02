@@ -72,7 +72,7 @@ export default function HomePage() {
         I'm Emmanuel, a software developer currently specializing in
         full-stack web and app development.
       </h1>
-      <p className="text-sm md:w-2/3 mb-8 md:mb-8">
+      <p className="text-md md:w-2/3 mb-8 md:mb-8">
         I'm a college student and software developer. I'm familiar with Javascript- (NextJS, Astro, Remix, etc) and Python (Flask, Django) based frameworks for web development. I can also build  mobile apps with React Native and other things like discord bots and chrome extensions.
       </p>
 
