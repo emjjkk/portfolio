@@ -66,7 +66,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="w-full md:w-[75%] h-screen overflow-y-scroll p-3 md:p-6 cs">
+    <div className="w-full md:w-[72%] h-screen overflow-y-scroll p-3 md:p-6 cs">
       <Header />
       <h1 className="text-3xl md:text-4xl my-5 w-full md:w-2/3 mt-5 md:mt-6">
         I'm Emmanuel, a software developer currently specializing in

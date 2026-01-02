@@ -47,7 +47,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="w-full md:w-[75%] h-screen overflow-y-scroll p-3 md:p-6 cs">
+    <div className="w-full md:w-[72%] h-screen overflow-y-scroll p-3 md:p-6 cs">
       {/* Header */}
       <div className="mb-6">
         <a href="/" className="text-sm text-blue-500 hover:text-blue-600 mb-2 inline-block">

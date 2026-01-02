@@ -22,7 +22,7 @@ export default function Navigation() {
   ];
 
   return (
-    <div className="hidden w-[25%] h-full p-6 md:flex items-center justify-end border-r border-slate-300 dark:border-slate-700">
+    <div className="hidden w-[28%] h-full p-6 md:flex items-center justify-end border-r border-slate-300 dark:border-slate-700">
       <div className="flex flex-col items-end gap-5">
         {links.map((link) => {
           const Icon = link.icon;

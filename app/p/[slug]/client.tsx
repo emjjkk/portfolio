@@ -91,7 +91,7 @@ export default function ClientBlogPage({ slug }: ClientBlogPageProps) {
   if (!postMeta) return <div className="p-6">Post not found.</div>;
 
   return (
-    <div className="md:w-[75%] h-screen overflow-y-scroll p-4 md:p-6 cs">
+    <div className="md:w-[72%] h-screen overflow-y-scroll p-4 md:p-6 cs">
 
       <div className="mb-3 md:w-2/3">
         <div className="mb-6">
@@ -145,11 +145,11 @@ export default function ClientBlogPage({ slug }: ClientBlogPageProps) {
               <ReactMarkdown
                 rehypePlugins={[rehypeRaw as any]}
                 components={{
-                  code({ inline, className, children, ...props }) {
+                  code({ inline, className, children, ...props }: any) {
                     const match = /language-(\w+)/.exec(className ?? "");
                     return !inline && match ? (
                       <SyntaxHighlighter
-                        style={materialDark}
+                        style={materialDark as any}
                         language={match[1]}
                         PreTag="div"
                         className="text-xs codeblocku cs"
