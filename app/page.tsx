@@ -59,20 +59,20 @@ export default function HomePage() {
   // ✅ Show spinner while preloading posts
   if (loading) {
     return (
-      <main className="w-full md:w-[70%] h-screen flex items-center justify-center">
+      <main className="w-full md:w-[75%] h-screen flex items-center justify-center">
         <LuLoaderCircle className="text-3xl animate-spin text-neutral-500 dark:text-neutral-400" />
       </main>
     );
   }
 
   return (
-    <div className="w-full md:w-[70%] h-screen overflow-y-scroll p-3 md:p-6 cs">
+    <div className="w-full md:w-[75%] h-screen overflow-y-scroll p-3 md:p-6 cs">
       <Header />
-      <h1 className="text-3xl md:text-4xl my-5 w-full md:w-3/4 mt-5 md:mt-6">
+      <h1 className="text-3xl md:text-4xl my-5 w-full md:w-2/3 mt-5 md:mt-6">
         I'm Emmanuel, a software developer currently specializing in
         full-stack web and app development.
       </h1>
-      <p className="text-md md:w-2/3 mb-8 md:mb-8">
+      <p className="text-sm md:w-2/3 mb-8 md:mb-8">
         I'm a college student and software developer. I'm familiar with Javascript- (NextJS, Astro, Remix, etc) and Python (Flask, Django) based frameworks for web development. I can also build  mobile apps with React Native and other things like discord bots and chrome extensions.
       </p>
 
@@ -119,15 +119,15 @@ export default function HomePage() {
 
         <div className="md:w-1/3 mt-5">
           <div className="sticky top-0 space-y-4">
-            <div className="bg-blue-50 dark:bg-neutral-700 dark:text-neutral-100 rounded-lg p-5">
+            <div className="bg-blue-50 dark:bg-neutral-700 dark:text-neutral-100 p-4">
               <h3 className="text-lg font-semibold mb-3">Subscribe, maybe?</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
                 No spam - just the occasional interesting thing.
               </p>
               <SubscribeBox />
             </div>
-            <div className="bg-neutral-100 dark:bg-neutral-700 rounded-lg p-5 flex items-center justify-center h-32">
-              ad.
+            <div className="bg-neutral-100 dark:bg-neutral-700 p-5 flex items-center justify-center h-32">
+              
             </div>
             <span className="text-sm text-right text-neutral-500 dark:text-neutral-400">
               © 2025 Emmanuel Alabi

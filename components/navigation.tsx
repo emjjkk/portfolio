@@ -17,15 +17,13 @@ export default function Navigation() {
 
   const links: NavLink[] = [
     { href: "/", icon: LuHouse, label: "Home" },
-    { href: "/about", icon: LuUserRound, label: "About" },
     { href: "/projects", icon: LuFolder, label: "Projects" },
-    { href: "/goodies", icon: LuCarrot, label: "Goodies" },
-    { href: "/contact", icon: LuSend, label: "Contact" },
+    { href: "/about", icon: LuUserRound, label: "About" },
   ];
 
   return (
-    <div className="hidden w-[30%] h-full p-6 md:flex items-center justify-end border-r border-slate-300 dark:border-slate-700">
-      <div className="flex flex-col items-end gap-4">
+    <div className="hidden w-[25%] h-full p-6 md:flex items-center justify-end border-r border-slate-300 dark:border-slate-700">
+      <div className="flex flex-col items-end gap-5">
         {links.map((link) => {
           const Icon = link.icon;
           const isActive = pathname === link.href;

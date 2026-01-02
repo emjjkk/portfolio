@@ -102,7 +102,7 @@ export default function Header() {
           <span className="text-md">Emmanuel Alabi</span>
         </div>
 
-        {/* Right section (desktop only) */}
+        {/* Right section (desktop only) 
         <div className="hidden md:flex items-center gap-2">
           <p
             className={`text-md text-slate-400 px-1 transition-opacity duration-500 ${
@@ -128,6 +128,7 @@ export default function Header() {
             <FaWhatsapp className="text-md text-slate-400 hover:text-blue-500" />
           </a>
         </div>
+        */}
 
         {/* Hamburger (mobile only) */}
         <button

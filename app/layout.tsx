@@ -1,6 +1,6 @@
 import Script from "next/script";
 import type { Metadata } from "next";
-import { Outfit, Geist_Mono } from "next/font/google";
+import { Outfit, Geist_Mono,  } from "next/font/google";
 import "./globals.css";
 
 import Navigation from "@/components/navigation";
@@ -36,7 +36,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.className} ${geistMono.variable} antialiased w-full h-screen flex bg-white text-black dark:bg-neutral-950 dark:text-neutral-100`}
+        className={`${geistSans.className} ${geistMono.variable} antialiased w-full h-screen flex bg-white text-black bg-cover bg-center dark:bg-gradient-to-br from-black to-neutral-950 dark:text-neutral-100`}
       >
         <DarkMode />
         <Navigation />
