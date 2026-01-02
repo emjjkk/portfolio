@@ -36,7 +36,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.className} ${geistMono.variable} antialiased w-full h-screen flex bg-white text-black bg-cover bg-center dark:bg-gradient-to-br from-black to-neutral-950 dark:text-neutral-100`}
+        className={`${geistSans.className} ${geistMono.variable} antialiased w-full h-screen flex bg-white text-black bg-cover bg-center dark:bg-neutral-950 dark:text-neutral-100`}
       >
         <DarkMode />
         <Navigation />

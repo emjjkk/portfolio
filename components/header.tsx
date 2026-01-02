@@ -145,16 +145,6 @@ export default function Header() {
           <a href="/" className="hover:text-blue-400">Home</a>
           <a href="/about" className="hover:text-blue-400">About</a>
           <a href="/projects" className="hover:text-blue-400">Projects</a>
-          <a href="/goodies" className="hover:text-blue-400">Goodies</a>
-          <a href="/contact" className="hover:text-blue-400">Contact</a>
-
-          <div className="flex gap-3 mt-2">
-            <a href="#"><FaGithub className="hover:text-blue-400" /></a>
-            <a href="#"><FaBluesky className="hover:text-blue-400" /></a>
-            <a href="#"><FaInstagram className="hover:text-blue-400" /></a>
-            <a href="#"><FaDiscord className="hover:text-blue-400" /></a>
-            <a href="#"><FaWhatsapp className="hover:text-blue-400" /></a>
-          </div>
         </div>
       )}
     </>

@@ -125,7 +125,7 @@ export default function ProjectsPage() {
                 />
                 <h3 className="text-base font-semibold">{project.title}</h3>
               </div>
-              <p className="text-xs text-gray-600 dark:text-gray-300 mb-3 line-clamp-2">
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 line-clamp-2">
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-1 mb-3">
